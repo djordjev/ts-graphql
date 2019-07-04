@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc -w",
-    "start": "node dist/app.js",
-    "start:dev": "concurrently \"npm:build:dev\" \"nodemon --inspect ./dist/app.js\""
+    "start": "node dist/src/app.js",
+    "start:dev": "concurrently \"npm:build:dev\" \"nodemon --inspect ./dist/src/app.js\""
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,15 @@
   "homepage": "https://github.com/djordjev/ts-graphql#readme",
   "devDependencies": {
     "@types/express": "^4.17.0",
+    "@types/express-graphql": "^0.8.0",
     "concurrently": "^4.1.1",
     "nodemon": "^1.19.1",
     "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.4.2"
   }
 }
