@@ -1,0 +1,8 @@
+type UserType {
+  age: Int
+  firstName: String
+  id: String
+}
+type Query {
+  user(id: String!): UserType
+}

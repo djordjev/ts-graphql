@@ -16,7 +16,11 @@ app.use(
 );
 
 app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('homepage');
+  let response: string;
+  response = 'home';
+  response += ' ';
+  response += 'page';
+  res.send(response);
 });
 
 app.listen(port, () => {

@@ -1,14 +1,6 @@
 import { buildSchema, GraphQLSchema } from 'graphql';
+import schema from './schema.graphql';
 
-const schema: GraphQLSchema = buildSchema(`
-  type UserType {
-    age: Int
-    firstName: String
-    id: String
-  },
-  type Query {
-    user(id: String!): UserType
-  }
-`);
+const gqlSchema: GraphQLSchema = buildSchema(schema);
 
-export default schema;
+export default gqlSchema;

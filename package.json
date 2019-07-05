@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "build": "tsc",
-    "build:dev": "tsc -w",
+    "build": "rm -rf ./dist && webpack",
+    "build:dev": "webpack --watch",
     "start": "node dist/app.js",
     "start:dev": "concurrently \"npm:build:dev\" \"nodemon --inspect ./dist/app.js\""
   },
@@ -24,8 +24,13 @@
     "@types/express-graphql": "^0.8.0",
     "concurrently": "^4.1.1",
     "nodemon": "^1.19.1",
+    "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-graphql-loader": "^1.0.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "express": "^4.17.1",
