@@ -1,6 +1,6 @@
 import express from 'express';
 import expressGraphQL from 'express-graphql';
-import resolvers from './resolvers';
+import rootValue from './queries';
 import schema from './schema';
 
 const app: express.Application = express();
@@ -10,7 +10,7 @@ app.use(
   '/graphql',
   expressGraphQL({
     graphiql: true,
-    rootValue: resolvers,
+    rootValue,
     schema
   })
 );
