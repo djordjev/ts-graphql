@@ -1,15 +1,6 @@
-interface IUserArgs {
-  id: string;
-  firstName?: string;
-}
+import { GQLUserType, QueryToUserArgs } from '../../_types/graphQLTypes';
 
-interface IUserResponse {
-  id: string;
-  age: number;
-  firstName?: string;
-}
-
-const resolver = (args: IUserArgs): IUserResponse => {
+const resolver = (args: QueryToUserArgs): GQLUserType => {
   return {
     age: 29,
     firstName: args.firstName || 'Djordje',
