@@ -4,11 +4,10 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "build": "rm -rf ./dist && webpack",
-    "build:dev": "webpack --watch",
+    "build": "rm -rf ./dist && tsc",
+    "build:dev": "tsc --w",
     "start": "node dist/app.js",
-    "start:dev": "concurrently \"npm:build:dev\" \"nodemon --inspect ./dist/app.js\"",
-    "generate-types": "webpack --config ./generate-types/webpack.buildtypes.config.js && node ./generate-types/buildTypes.js"
+    "start:dev": "PORT=4000 ts-node-dev --inspect -- ./src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -22,21 +21,19 @@
   "homepage": "https://github.com/djordjev/ts-graphql#readme",
   "devDependencies": {
     "@types/express": "^4.17.0",
-    "@types/express-graphql": "^0.8.0",
+    "@types/graphql": "^14.2.2",
+    "@types/node": "^12.6.2",
     "concurrently": "^4.1.1",
-    "graphql-schema-typescript": "^1.2.9",
-    "nodemon": "^1.19.1",
-    "ts-loader": "^6.0.4",
+    "ts-node-dev": "^1.0.0-pre.40",
     "tslint": "^5.18.0",
-    "typescript": "^3.5.2",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5",
-    "webpack-graphql-loader": "^1.0.2",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^3.5.2"
   },
   "dependencies": {
+    "apollo-datasource-rest": "^0.5.0",
+    "apollo-server": "^2.6.7",
+    "apollo-server-express": "^2.6.9",
     "express": "^4.17.1",
-    "express-graphql": "^0.8.0",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.5"
   }
 }

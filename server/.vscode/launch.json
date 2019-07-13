@@ -8,8 +8,6 @@
       "type": "node",
       "request": "attach",
       "name": "Attach Program",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "protocol": "inspector",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]

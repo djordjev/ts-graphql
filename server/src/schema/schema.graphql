@@ -1,5 +1,0 @@
-#import "./user/user.graphql"
-
-type Query {
-  user(id: String!, firstName: String): UserType
-}

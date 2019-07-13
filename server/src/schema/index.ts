@@ -1,6 +1,26 @@
-import { buildSchema, GraphQLSchema } from 'graphql';
-import schema from './schema.graphql';
+import { DocumentNode, GraphQLSchema } from 'graphql';
+import { makeExecutableSchema } from 'graphql-tools';
 
-const gqlSchema: GraphQLSchema = buildSchema(schema);
+import rootSchema from './root';
+import userSchema from './user';
 
-export default gqlSchema;
+import { getUsers } from '../api/users/resolvers';
+
+const typeDefs: DocumentNode[] = [rootSchema, userSchema];
+
+const rootResolvers = {
+  Query: {
+    getUsers
+  }
+};
+
+const createSchema = (): GraphQLSchema => {
+  const executibleSchema = makeExecutableSchema({
+    resolvers: [rootResolvers],
+    typeDefs
+  });
+
+  return executibleSchema;
+};
+
+export default createSchema;

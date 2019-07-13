@@ -1,5 +1,0 @@
-type UserType {
-  age: Int
-  firstName: String
-  id: String
-}

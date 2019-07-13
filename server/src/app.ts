@@ -1,28 +1,19 @@
-import express from 'express';
-import expressGraphQL from 'express-graphql';
-import rootValue from './queries';
-import schema from './schema';
+import { ApolloServer } from 'apollo-server-express';
+import express, { Application } from 'express';
+import { GraphQLSchema } from 'graphql';
 
-const app: express.Application = express();
-const port: number = 3000;
+import createSchema from './schema';
 
-app.use(
-  '/graphql',
-  expressGraphQL({
-    graphiql: true,
-    rootValue,
-    schema
-  })
-);
+const app: Application = express();
 
-app.get('/', (req: express.Request, res: express.Response) => {
-  let response: string;
-  response = 'home';
-  response += ' ';
-  response += 'page';
-  res.send(response);
+const schema: GraphQLSchema = createSchema();
+const server: ApolloServer = new ApolloServer({ schema });
+
+server.applyMiddleware({
+  app,
+  path: '/graphql'
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.listen({ port: process.env.PORT }, () => {
+  console.log('Apollo Server listening');
 });
