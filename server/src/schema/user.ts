@@ -8,6 +8,6 @@ export default gql`
   }
 
   extend type Query {
-    getUsers: [User]
+    getUsers(userId: Int!): [User]!
   }
 `;
