@@ -5,9 +5,6 @@ export default gql`
     id: ID
     firstName: String!
     age: Int
-  }
-
-  extend type Query {
-    getUsers(userId: Int!): [User]!
+    company: Company
   }
 `;

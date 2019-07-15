@@ -1,12 +1,19 @@
 import { DocumentNode, GraphQLSchema } from 'graphql';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import rootSchema from './root';
-import userSchema from './user';
+import companySchema from '../api/company/schema';
+import getUsersSchema from '../api/root/getUsers/schema';
+import rootSchema from '../api/root/schema';
+import userSchema from '../api/users/schema';
 
-import { getUsers } from '../api/users/resolvers';
+import getUsers from '../api/root/getUsers/resolvers';
 
-const typeDefs: DocumentNode[] = [rootSchema, userSchema];
+const typeDefs: DocumentNode[] = [
+  rootSchema,
+  userSchema,
+  companySchema,
+  getUsersSchema
+];
 
 const rootResolvers = {
   Query: {

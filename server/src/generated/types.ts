@@ -20,6 +20,14 @@ export interface User {
   firstName: string;
 
   age?: Maybe<number>;
+
+  company?: Maybe<Company>;
+}
+
+export interface Company {
+  id?: Maybe<string>;
+
+  name: string;
 }
 
 // ====================================================
