@@ -5,6 +5,6 @@ export default gql`
     id: ID
     firstName: String!
     age: Int
-    company: Company
+    company(companyType: String!): Company
   }
 `;

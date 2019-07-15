@@ -37,3 +37,6 @@ export interface Company {
 export interface GetUsersQueryArgs {
   userId: number;
 }
+export interface CompanyUserArgs {
+  companyType: string;
+}
