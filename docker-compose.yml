@@ -12,3 +12,15 @@ services:
       - ./server:/usr/src/app
     environment:
       - NODE_ENV=development
+      - PORT=3000
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./db/
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=gqltest

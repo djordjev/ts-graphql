@@ -15,5 +15,5 @@ server.applyMiddleware({
 });
 
 app.listen({ port: process.env.PORT }, () => {
-  console.log('Apollo Server listening');
+  console.log('Apollo Server listening, port', process.env.PORT);
 });

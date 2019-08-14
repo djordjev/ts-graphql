@@ -30,6 +30,16 @@ export interface Company {
   name: string;
 }
 
+export interface Mutation {
+  signup: AuthPayload;
+}
+
+export interface AuthPayload {
+  username: string;
+
+  token: string;
+}
+
 // ====================================================
 // Arguments
 // ====================================================
@@ -39,4 +49,9 @@ export interface GetUsersQueryArgs {
 }
 export interface CompanyUserArgs {
   companyType: string;
+}
+export interface SignupMutationArgs {
+  username: string;
+
+  password: string;
 }
