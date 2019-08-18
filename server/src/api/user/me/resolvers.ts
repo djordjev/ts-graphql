@@ -5,7 +5,7 @@ const me = (_: any, args: any, context: any, info: GraphQLResolveInfo) => {
     email: 'djordje@gyorgy.tech',
     firstName: 'Djordje ME',
     id: 'me',
-    lstName: 'Vukovic ME',
+    lastName: 'Vukovic ME',
     role: 'admin'
   };
 };

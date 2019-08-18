@@ -13,6 +13,9 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
+      - DB_NAME=gqltest
+      - DB_USER=postgres
+      - DB_PASS=postgres
     depends_on:
       - db
   db:

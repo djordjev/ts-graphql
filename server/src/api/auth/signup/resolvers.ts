@@ -1,23 +1,39 @@
+import { UserInputError } from 'apollo-server';
 import { GraphQLResolveInfo } from 'graphql';
-import { AuthPayload } from '../../../generated/types';
 
-const signup = (
+import User from '../../../connections/db/models/User';
+import { IAppContext } from '../../../context/context';
+import { AuthPayload, SignupMutationArgs } from '../../../generated/types';
+
+const signup = async (
   _: any,
-  args: any,
-  context: any,
+  args: SignupMutationArgs,
+  context: IAppContext,
   info: GraphQLResolveInfo
-): AuthPayload => {
-  const response: any = {
-    token: 'dasdasdadsadasd',
-    user: {
-      email: 'djordje@gyorgy.tech',
-      firstName: 'Djordje',
-      id: 'dasadasd',
-      lstName: 'Vukovic',
-      role: 'admin'
+): Promise<AuthPayload> => {
+  const { firstName, lastName, password, username } = args;
+
+  if (!firstName || !lastName || !password || !username) {
+    throw new UserInputError('Missing required args');
+  }
+
+  try {
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      throw new Error('User with the same username already exists');
     }
-  };
-  return response;
+
+    const newUser = new User({ firstName, lastName, password, username });
+    await newUser.save();
+    return {
+      token: 'abc',
+      user: newUser
+    };
+  } catch (e) {
+    console.error(e);
+  }
+
+  return null;
 };
 
 export default signup;

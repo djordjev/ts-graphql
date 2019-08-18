@@ -7,6 +7,12 @@ export default gql`
   }
 
   extend type Mutation {
-    signup(username: String!, password: String!): AuthPayload!
+    signup(
+      username: String!
+      password: String!
+      firstName: String!
+      lastName: String!
+      role: String
+    ): AuthPayload!
   }
 `;
