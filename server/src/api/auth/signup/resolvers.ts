@@ -13,25 +13,22 @@ const signup = async (
 ): Promise<AuthPayload> => {
   const { firstName, lastName, password, username } = args;
 
-  if (!firstName || !lastName || !password || !username) {
-    throw new UserInputError('Missing required args');
+  const existingUser = await User.findOne({ where: { username } });
+  if (existingUser) {
+    throw new UserInputError('User with the same username already exists');
   }
 
-  try {
-    const existingUser = await User.findOne({ where: { username } });
-    if (existingUser) {
-      throw new Error('User with the same username already exists');
-    }
-
-    const newUser = new User({ firstName, lastName, password, username });
-    await newUser.save();
-    return {
-      token: 'abc',
-      user: newUser
-    };
-  } catch (e) {
-    console.error(e);
-  }
+  const newUser = await User.create({
+    firstName,
+    lastName,
+    password,
+    role: 'admin',
+    username
+  });
+  return {
+    token: 'abc',
+    user: newUser
+  };
 
   return null;
 };

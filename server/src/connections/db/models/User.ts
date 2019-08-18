@@ -19,6 +19,7 @@ const init = () => {
         type: DataTypes.STRING
       },
       id: {
+        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.STRING
       },

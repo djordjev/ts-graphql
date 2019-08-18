@@ -7,8 +7,12 @@
     {
       "type": "node",
       "request": "attach",
+      "address": "localhost",
       "name": "Attach Program",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      "port": 9229,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/usr/src/app",
+      "protocol": "inspector"
     }
   ]
 }
