@@ -14,6 +14,8 @@ server.applyMiddleware({
   path: '/graphql'
 });
 
-app.listen({ port: process.env.PORT }, () => {
-  console.log('Apollo Server listening, port', process.env.PORT);
+const port = process.env.PORT || 3000;
+
+app.listen({ port }, () => {
+  console.log('Apollo Server listening, port', port);
 });

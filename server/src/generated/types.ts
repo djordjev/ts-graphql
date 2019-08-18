@@ -11,23 +11,19 @@ export type Maybe<T> = T | null;
 // ====================================================
 
 export interface Query {
-  getUsers: (Maybe<User>)[];
+  me: User;
 }
 
 export interface User {
   id?: Maybe<string>;
 
-  firstName: string;
+  firstName?: Maybe<string>;
 
-  age?: Maybe<number>;
+  email?: Maybe<string>;
 
-  company?: Maybe<Company>;
-}
+  lastName?: Maybe<string>;
 
-export interface Company {
-  id?: Maybe<string>;
-
-  name: string;
+  role?: Maybe<string>;
 }
 
 export interface Mutation {
@@ -35,7 +31,7 @@ export interface Mutation {
 }
 
 export interface AuthPayload {
-  username: string;
+  user?: Maybe<User>;
 
   token: string;
 }
@@ -44,12 +40,6 @@ export interface AuthPayload {
 // Arguments
 // ====================================================
 
-export interface GetUsersQueryArgs {
-  userId: number;
-}
-export interface CompanyUserArgs {
-  companyType: string;
-}
 export interface SignupMutationArgs {
   username: string;
 
