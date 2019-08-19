@@ -6,13 +6,18 @@ class User extends Model {
   public username!: string;
   public lastName!: string;
   public firstName!: string;
-  public role!: string;
+  public role: string;
   public password!: string;
+  public email!: string;
 }
 
 const init = () => {
   User.init(
     {
+      email: {
+        field: 'email',
+        type: DataTypes.STRING
+      },
       firstName: {
         allowNull: false,
         field: 'first_name',
@@ -33,7 +38,6 @@ const init = () => {
         type: DataTypes.STRING
       },
       role: {
-        allowNull: false,
         type: DataTypes.STRING
       },
       username: {

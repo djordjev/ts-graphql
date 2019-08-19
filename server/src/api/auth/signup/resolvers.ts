@@ -11,7 +11,7 @@ const signup = async (
   context: IAppContext,
   info: GraphQLResolveInfo
 ): Promise<AuthPayload> => {
-  const { firstName, lastName, password, username } = args;
+  const { email, firstName, lastName, password, username } = args;
 
   const existingUser = await User.findOne({ where: { username } });
   if (existingUser) {
@@ -19,10 +19,10 @@ const signup = async (
   }
 
   const newUser = await User.create({
+    email,
     firstName,
     lastName,
     password,
-    role: 'admin',
     username
   });
   return {

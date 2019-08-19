@@ -13,6 +13,7 @@ export default gql`
       firstName: String!
       lastName: String!
       role: String
+      email: String
     ): AuthPayload!
   }
 `;

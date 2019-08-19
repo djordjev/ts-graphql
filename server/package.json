@@ -8,7 +8,6 @@
     "build:dev": "tsc --w",
     "start": "node dist/app.js",
     "start:dev": "ts-node-dev --inspect=0.0.0.0 -- ./src/app.ts",
-    "gen-init": "graphql-codegen init",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "repository": {

@@ -50,4 +50,6 @@ export interface SignupMutationArgs {
   lastName: string;
 
   role?: Maybe<string>;
+
+  email?: Maybe<string>;
 }
