@@ -28,6 +28,8 @@ export interface User {
 
 export interface Mutation {
   signup: AuthPayload;
+
+  login: AuthPayload;
 }
 
 export interface AuthPayload {
@@ -52,4 +54,9 @@ export interface SignupMutationArgs {
   role?: Maybe<string>;
 
   email?: Maybe<string>;
+}
+export interface LoginMutationArgs {
+  username: string;
+
+  password: string;
 }

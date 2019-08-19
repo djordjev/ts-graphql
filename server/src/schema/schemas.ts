@@ -1,5 +1,6 @@
 import { DocumentNode } from 'graphql';
 
+import loginSchema from '../api/auth/login/schema';
 import signupSchema from '../api/auth/signup/schema';
 import rootSchema from '../api/root/schema';
 import meSchema from '../api/user/me/schema';
@@ -9,7 +10,8 @@ const schemas: DocumentNode[] = [
   userSchema,
   rootSchema,
   signupSchema,
-  meSchema
+  meSchema,
+  loginSchema
 ];
 
 export default schemas;

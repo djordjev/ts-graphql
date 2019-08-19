@@ -1,4 +1,5 @@
 import { UserInputError } from 'apollo-server';
+import { hash } from 'bcrypt';
 import { GraphQLResolveInfo } from 'graphql';
 
 import User from '../../../connections/db/models/User';
@@ -18,11 +19,16 @@ const signup = async (
     throw new UserInputError('User with the same username already exists');
   }
 
+  const hashPassword = await hash(
+    password,
+    parseInt(process.env.SALT_ROUNDS, 10)
+  );
+
   const newUser = await User.create({
     email,
     firstName,
     lastName,
-    password,
+    password: hashPassword,
     username
   });
   return {

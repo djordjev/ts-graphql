@@ -16,6 +16,7 @@ services:
       - DB_NAME=gqltest
       - DB_USER=postgres
       - DB_PASS=postgres
+      - SALT_ROUNDS=10
     depends_on:
       - db
   db:
