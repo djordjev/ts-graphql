@@ -6,13 +6,26 @@
   "configurations": [
     {
       "type": "node",
+      "request": "launch",
+      "name": "Launch Program Locally",
+      "program": "${workspaceFolder}/src/app.ts",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "DB_HOST": "localhost",
+        "DB_NAME": "gqltest",
+        "DB_USER": "postgres",
+        "DB_PASS": "postgres",
+        "SALT_ROUNDS": "10"
+      }
+    },
+    {
+      "type": "node",
       "request": "attach",
-      "address": "localhost",
-      "name": "Attach Program",
-      "port": 9229,
+      "name": "Docker: Attach to Node",
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "/usr/src/app",
-      "protocol": "inspector"
+      "sourceMaps": true
     }
   ]
 }

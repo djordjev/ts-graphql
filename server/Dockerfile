@@ -1,4 +1,6 @@
-FROM node:alpine
+FROM node:12.8.1-alpine
+
+RUN apk add python make gcc g++
 
 WORKDIR /usr/src/app
 

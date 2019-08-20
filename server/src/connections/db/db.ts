@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import { init as initUser } from './models/User';
 
-const { DB_NAME, DB_USER, DB_PASS } = process.env;
+const { DB_HOST, DB_NAME, DB_USER, DB_PASS } = process.env;
 
 let sequelize: Sequelize = null;
 
@@ -10,10 +10,10 @@ const initializeSequelize = async (): Promise<Sequelize> => {
     sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
       define: { timestamps: false },
       dialect: 'postgres',
-      host: 'db',
+      host: DB_HOST,
       pool: {
         acquire: 30000,
-        idle: 10000,
+        idle: 100002,
         max: 5,
         min: 0
       }

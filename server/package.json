@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
-    "build:dev": "tsc --w",
+    "build": "rm -rf ./dist && tsc --skipLibCheck",
+    "build:dev": "tsc --skipLibCheck --w",
     "start": "node dist/app.js",
-    "start:dev": "ts-node-dev --inspect=0.0.0.0 -- ./src/app.ts",
+    "start:dev": "concurrently --kill-others \"npm run build:dev\" \"nodemon --inspect=0.0.0.0 --no-lazy --watch dist dist/app.js\"",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "repository": {
@@ -33,10 +33,11 @@
     "@types/pg": "^7.11.0",
     "@types/sequelize": "^4.28.4",
     "@types/validator": "^10.11.2",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "graphql-codegen-typescript-common": "^0.18.2",
     "graphql-codegen-typescript-server": "^0.18.2",
     "graphql-typings": "0.0.1-beta-2",
+    "nodemon": "^1.19.1",
     "ts-node-dev": "^1.0.0-pre.40",
     "tslint": "^5.18.0",
     "typescript": "^3.5.2"
