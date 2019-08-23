@@ -11,6 +11,14 @@ const login = async (
   context: IAppContext
 ) => {
   const { username, password } = args;
+  const { req } = context;
+
+  if (req.session.user) {
+    return {
+      token: req.sessionID,
+      user: req.session.user
+    };
+  }
 
   let user;
   try {

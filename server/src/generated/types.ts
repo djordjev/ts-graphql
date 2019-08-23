@@ -30,6 +30,8 @@ export interface Mutation {
   signup: AuthPayload;
 
   login: AuthPayload;
+
+  logout?: Maybe<boolean>;
 }
 
 export interface AuthPayload {

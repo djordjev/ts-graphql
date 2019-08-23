@@ -33,14 +33,15 @@ app.use(
     },
     name: 'cid',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     secret: process.env.SECRET,
     store: new RedisStore({ client: redisClient })
   })
 );
 
 const schema: GraphQLSchema = createSchema();
-const server: ApolloServer = new ApolloServer({ context, schema });
+const playground: object = { settings: { 'request.credentials': 'include' } };
+const server: ApolloServer = new ApolloServer({ context, schema, playground });
 
 server.applyMiddleware({
   app,
