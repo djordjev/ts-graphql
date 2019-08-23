@@ -2,9 +2,14 @@ import { UserInputError } from 'apollo-server';
 import { compare } from 'bcrypt';
 
 import User from '../../../connections/db/models/User';
+import { IAppContext } from '../../../context/context';
 import { LoginMutationArgs } from '../../../generated/types';
 
-const login = async (parent: any, args: LoginMutationArgs) => {
+const login = async (
+  parent: any,
+  args: LoginMutationArgs,
+  context: IAppContext
+) => {
   const { username, password } = args;
 
   let user;
@@ -26,8 +31,10 @@ const login = async (parent: any, args: LoginMutationArgs) => {
     throw new UserInputError('Invalid password');
   }
 
+  context.req.session.user = user.toJSON();
+
   return {
-    token: 'bbb',
+    token: context.req.sessionID,
     user
   };
 };

@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "server"
+	},
+	{
+		"path": "db"
+	},
+	{
+		"path": "redis"
+	}
+],
+  "settings": {}
+}
