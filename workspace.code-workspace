@@ -1,14 +1,17 @@
 {
   "folders": [
-	{
-		"path": "server"
-	},
-	{
-		"path": "db"
-	},
-	{
-		"path": "redis"
-	}
-],
+    {
+      "path": "server"
+    },
+    {
+      "path": "db"
+    },
+    {
+      "path": "redis"
+    },
+    {
+      "path": "client"
+    }
+  ],
   "settings": {}
 }

@@ -10,15 +10,8 @@ services:
       - '3000:3000'
     volumes:
       - ./server:/usr/src/app
-    environment:
-      - NODE_ENV=development
-      - PORT=3000
-      - DB_HOST=db
-      - DB_NAME=gqltest
-      - DB_USER=postgres
-      - DB_PASS=postgres
-      - SALT_ROUNDS=10
-      - SECRET=ThisIsSomethingReallySecret!?#
+    env_file:
+      - './server/.env'
     depends_on:
       - db
       - redis
@@ -27,10 +20,8 @@ services:
       context: ./db/
     ports:
       - '5432:5432'
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=gqltest
+    env_file:
+      - './db/.env'
   redis:
     build:
       context: ./redis/
