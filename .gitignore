@@ -1,3 +1,8 @@
+# Server
 server/node_modules
 server/dist
 server/generate-types/buildTypes.js
+
+# Client
+client/node_modules
+client/dist

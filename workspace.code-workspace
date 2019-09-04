@@ -13,5 +13,7 @@
       "path": "client"
     }
   ],
-  "settings": {}
+  "settings": {
+    "git.ignoreLimitWarning": true
+  }
 }
