@@ -27,3 +27,18 @@ services:
       context: ./redis/
     ports:
       - '6379:6379'
+  client:
+    build:
+      context: ./client/
+    ports:
+      - '8080:8080'
+    volumes:
+      - './client:/usr/src/app'
+  nginx:
+    build:
+      context: ./nginx/
+    ports:
+      - '80:8080'
+    depends_on:
+      - server
+      - client
