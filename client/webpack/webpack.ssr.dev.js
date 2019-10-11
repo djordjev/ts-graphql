@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -26,5 +27,6 @@ module.exports = {
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
-  }
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
