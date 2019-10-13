@@ -1,11 +1,10 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/server/server.tsx',
   name: 'server',
   output: {
@@ -27,6 +26,5 @@ module.exports = {
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  }
 };

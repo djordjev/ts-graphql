@@ -1,18 +1,12 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   name: 'client',
   entry: {
-    app: [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client?http://localhost:3000/__webpack_hmr',
-      'webpack/hot/only-dev-server',
-      './src/client/index.tsx'
-    ],
+    app: ['./src/client/index.tsx'],
     vendor: ['react', 'react-dom']
   },
   output: {
@@ -32,6 +26,5 @@ module.exports = {
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  }
 };
