@@ -1,5 +1,5 @@
 const path = require('path');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
@@ -26,7 +26,13 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: 'style-loader', options: { injectType: 'styleTag' } },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: true
+            }
+          },
           {
             loader: '@teamsupercell/typings-for-css-modules-loader',
             options: {
@@ -49,10 +55,10 @@ module.exports = {
     ]
   },
   plugins: [
-    // new MiniCssExtractPlugin({
-    //   filename: '[name].css',
-    //   chunkFilename: '[id].css'
-    // }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
     new webpack.WatchIgnorePlugin([/css\.d\.ts$/])
   ]
 };
