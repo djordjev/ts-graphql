@@ -1,7 +1,9 @@
 import * as React from 'react';
 
+import * as styles from './styles.module.css';
+
 const Login: React.FC = () => {
-  return <div>Djordje Vukovic</div>;
+  return <div className={styles.component}>Djordje Vukovic</div>;
 };
 
 export { Login };

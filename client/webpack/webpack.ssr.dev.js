@@ -21,6 +21,24 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: '@teamsupercell/typings-for-css-modules-loader',
+            options: {
+              banner: "// generated file. Don't edit"
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              onlyLocals: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(ts|tsx)$/,
         loader: 'ts-loader'
       },

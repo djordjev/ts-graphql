@@ -16,6 +16,7 @@ const serverRenderer = (options: any) => (
         <body>
             <div id='root'>${renderToString(<App />)}</div>
             <script src='/js/app.bundle.js'></script>
+            <link rel="stylesheet" type="text/css" href="app.css">
         </body>
     </html>
 `);

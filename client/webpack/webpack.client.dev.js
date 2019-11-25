@@ -1,10 +1,13 @@
 const path = require('path');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   mode: 'production',
   name: 'client',
+  stats: 'verbose',
   entry: {
     app: ['./src/client/index.tsx'],
     vendor: ['react', 'react-dom']
@@ -21,10 +24,35 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [
+          { loader: 'style-loader', options: { injectType: 'styleTag' } },
+          {
+            loader: '@teamsupercell/typings-for-css-modules-loader',
+            options: {
+              banner: "// generated file. Don't edit"
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(ts|tsx)$/,
         loader: 'ts-loader'
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
-  }
+  },
+  plugins: [
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css'
+    // }),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/])
+  ]
 };
