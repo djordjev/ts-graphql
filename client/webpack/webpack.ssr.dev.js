@@ -35,6 +35,14 @@ module.exports = {
               modules: true,
               onlyLocals: true
             }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: '.'
+              }
+            }
           }
         ]
       },
