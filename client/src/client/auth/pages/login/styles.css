@@ -1,5 +1,6 @@
 @import "../../../styles/colors.css";
 
 .component {
+  margin-top: 16px;
   color: var(--color-blue);
 }

@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -63,6 +64,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      files: '**/*.css'
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
