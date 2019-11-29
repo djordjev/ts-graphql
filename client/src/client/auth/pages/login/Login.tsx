@@ -3,7 +3,8 @@ import * as React from 'react';
 import * as styles from './styles.css';
 
 const Login: React.FC = () => {
-  return <div className={styles.component}>Djordje Vukovic</div>;
+    const copy = 'Djordje Vukovic';
+    return <div className={styles.component}>{copy}</div>;
 };
 
 export { Login };
