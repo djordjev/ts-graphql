@@ -1,12 +1,47 @@
 {
+  "extends": "stylelint-config-standard",
+  "plugins": ["stylelint-order"],
   "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["include", "mixin"]
+      }
+    ],
     "block-no-empty": null,
-    "color-no-invalid-hex": true,
-    "comment-empty-line-before": [ "always", {
-      "ignore": ["stylelint-commands", "after-comment"]
-    } ],
+    "color-hex-case": "lower",
+    "color-named": "never",
+    "color-no-hex": true,
     "declaration-colon-space-after": "always",
-    "indentation": 2,
-    "max-empty-lines": 2
+    "declaration-no-important": true,
+    "max-empty-lines": 1,
+    "number-leading-zero": "never",
+    "number-max-precision": 2,
+    "order/properties-alphabetical-order": true,
+    "selector-max-combinators": 2,
+    "selector-max-compound-selectors": 3,
+    "selector-max-id": 0,
+    "selector-no-qualifying-type": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "selector-pseudo-element-colon-notation": "single",
+    "unit-blacklist": ["s", "pt"],
+    "unit-whitelist": [
+      "dppx",
+      "deg",
+      "em",
+      "fr",
+      "ms",
+      "px",
+      "rem",
+      "%",
+      "vh",
+      "vw"
+    ],
+    "value-no-vendor-prefix": true
   }
 }

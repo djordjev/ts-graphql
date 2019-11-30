@@ -14,5 +14,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.css.d.ts": true
-    }
+    },
+    "css.validate": false,
+    "stylelint.enable": true
 }
